@@ -1,0 +1,14 @@
+{
+    admin off
+    auto_https off
+}
+
+http://127.0.0.1:3218 {
+    request_body {
+        max_size 64KB
+    }
+    reverse_proxy 127.0.0.1:3219 {
+        # Simulate the hosting edge, deriving identity from the actual socket.
+        header_up X-Vercel-Forwarded-For {remote_host}
+    }
+}

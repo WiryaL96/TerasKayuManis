@@ -1,0 +1,21 @@
+[Unit]
+Description=TerasKayuManis private database and media backup
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=tkm-backup
+Group=tkm-web
+EnvironmentFile=/etc/teraskayumanis/backup.env
+ExecStart=/opt/tkm-backup/venv/bin/python /opt/tkm-backup/backup.py
+StateDirectory=teraskayumanis-backups
+StateDirectoryMode=0750
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/teraskayumanis-backups
+MemoryMax=512M
+TimeoutStartSec=2h

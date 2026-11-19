@@ -1,0 +1,34 @@
+(tkm_app) {
+    encode zstd gzip
+    @uploads path /api/admin/upload /api/admin/staff-photo
+    request_body @uploads {
+        max_size 3MB
+    }
+    @regular {
+        not path /api/admin/upload /api/admin/staff-photo
+    }
+    request_body @regular {
+        max_size 64KB
+    }
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        X-Frame-Options DENY
+    }
+    handle /ws {
+        rewrite * /api/v1/realtime
+        reverse_proxy 127.0.0.1:8080
+    }
+    handle {
+        reverse_proxy 127.0.0.1:3000
+    }
+}
+
+teraskayumanis.alrizky.me {
+    header Strict-Transport-Security "max-age=31536000"
+    import tkm_app
+}
+
+http://16.79.69.36 {
+    redir https://teraskayumanis.alrizky.me{uri} permanent
+}

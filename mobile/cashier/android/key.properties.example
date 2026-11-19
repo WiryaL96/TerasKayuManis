@@ -1,0 +1,6 @@
+# Copy to android/key.properties (ignored). Use your private production key.
+# Keep this file outside shared artifacts; never commit filled credentials.
+storeFile=/private/teraskayumanis-release.jks
+storePassword=REPLACE_PRIVATELY
+keyAlias=teraskayumanis
+keyPassword=REPLACE_PRIVATELY

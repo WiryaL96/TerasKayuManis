@@ -1,0 +1,24 @@
+{
+  "source": "MENU TERAS KAYU MANIS_261012_222737.pdf",
+  "note": "Crops of supplied menu photographs only. No generated food images. Other dishes retain the shared placeholder.",
+  "photos": [
+    {"slug":"nasi-timbel-komplit","page":1,"rect":[615,400,175,180]},
+    {"slug":"ayam-asam-manis-nasi","page":1,"rect":[530,645,265,200]},
+    {"slug":"sapi-lada-hitam-nasi","page":1,"rect":[530,945,265,185]},
+    {"slug":"nasi-timbel-gepuk","page":2,"rect":[130,180,630,640]},
+    {"slug":"sop-iga-nasi","page":3,"rect":[120,265,650,540]},
+    {"slug":"sei-sapi-sambal-matah","page":4,"rect":[180,0,585,555]},
+    {"slug":"yamien-asin","page":6,"rect":[0,750,345,290]},
+    {"slug":"yamien-manis-rica","page":6,"rect":[415,790,375,305]},
+    {"slug":"chicken-cordon-bleu","page":7,"rect":[435,370,225,220]},
+    {"slug":"spaghetti-carbonara","page":7,"rect":[585,565,210,210]},
+    {"slug":"ribeye-meltique-200-gr","page":8,"rect":[100,690,315,270]},
+    {"slug":"tenderloin-meltique-200-gr","page":8,"rect":[445,670,285,305]},
+    {"slug":"pisang-goreng","page":10,"rect":[475,500,315,205]},
+    {"slug":"tempe-mendoan","page":10,"rect":[500,830,300,260]},
+    {"slug":"combo-beef-burger","page":12,"rect":[45,660,740,430]},
+    {"slug":"vanilla-milkshake","page":14,"rect":[95,590,180,480]},
+    {"slug":"choco-milkshake","page":14,"rect":[340,575,175,490]},
+    {"slug":"strawberry-milkshake","page":14,"rect":[585,575,175,490]}
+  ]
+}

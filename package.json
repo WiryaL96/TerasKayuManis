@@ -1,0 +1,42 @@
+{
+  "name": "teraskayumanis-monorepo",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "engines": {
+    "node": "^22.22.3 || ^24.15.0 || >=26.0.0"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "dev:backend": "node --env-file=backend/.env scripts/dev-backend.mjs",
+    "build": "npm run build --workspace=frontend",
+    "typecheck": "npm run typecheck --workspace=frontend",
+    "test:structure": "node --test scripts/structure.test.mjs scripts/deployment.test.mjs scripts/cash-ui.test.mjs scripts/order-flow.test.mjs scripts/order-ui.test.mjs scripts/checkout-regressions.test.mjs scripts/realtime-controller.test.mjs scripts/realtime-pages.test.mjs scripts/shared-qr.test.mjs scripts/customer-design.test.mjs scripts/product-selection.test.mjs scripts/menu-race.test.mjs scripts/customer-polish.test.mjs scripts/customer-colors.test.mjs scripts/restaurant-hours.test.mjs scripts/frontend-ux.test.mjs",
+    "build:vercel": "node scripts/build-vercel.mjs",
+    "test:staff": "node --test scripts/staff-security.test.mjs scripts/staff-auth-ui.test.mjs scripts/cashier-pin.test.mjs scripts/legacy-core.test.mjs scripts/catalog-crud.test.mjs scripts/admin-hardening.test.mjs",
+    "test:dashboard": "node --test scripts/dashboard.test.mjs scripts/query-cache.test.mjs scripts/pos-handoff.test.mjs scripts/serverless-sync.test.mjs",
+    "test:rush:local": "python scripts/rush-hour-local.py --seconds 300",
+    "test:bootstrap": "node --test scripts/bootstrap.test.mjs",
+    "test:preview": "node --test scripts/preview-demo.test.mjs",
+    "test:docs": "node --test scripts/docs.test.mjs",
+    "test:preview:browser": "playwright test --config=playwright.preview.config.mjs",
+    "test:dashboard:browser": "playwright test --config=playwright.dashboard.config.mjs",
+    "test:customer:browser": "playwright test --config=playwright.customer.config.mjs",
+    "test:staff:integration": "playwright test --config=playwright.staff.config.mjs",
+    "postinstall": "node scripts/patch-deepmerge.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  },
+  "overrides": {
+    "glob@>=9 <=14.0.1": "14.0.5",
+    "readdir-glob": {
+      "minimatch": "11.0.8"
+    },
+    "node-forge": "1.4.3"
+  }
+}

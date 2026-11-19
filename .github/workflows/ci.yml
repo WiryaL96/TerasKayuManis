@@ -1,0 +1,286 @@
+name: CI
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm audit --omit=dev --audit-level=high
+      - run: npm run test:structure
+      - run: npm run test:docs
+      - run: npm run test:staff
+      - run: node --test scripts/mobile-auth.test.mjs
+      - run: npm run test:dashboard
+      - run: npm run test:bootstrap
+      - run: npm run test:preview
+      - run: node --test scripts/staging-rush.test.mjs
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq age
+      - run: python3 -m unittest deploy.test_render_env deploy.test_deploy_release deploy.backup.test_backup deploy.backup.test_cloud_runner deploy.backup.test_artifact_backup
+      - name: Validate full production proxy configuration
+        run: docker run --rm --volume "$PWD/deploy:/etc/caddy:ro" caddy:2-alpine caddy validate --config /etc/caddy/Caddyfile
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:dashboard:browser
+      - run: npm run test:customer:browser
+      - name: Package VPS frontend
+        run: tar -czf web.tar.gz -C frontend/.output .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vps-web
+          path: web.tar.gz
+          retention-days: 1
+      - run: npm run build:vercel
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: teraskayumanis_test
+          POSTGRES_USER: test_runner
+          POSTGRES_PASSWORD: local_ci_only
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U test_runner -d teraskayumanis_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      TEST_DATABASE_URL: postgres://test_runner:local_ci_only@localhost:5432/teraskayumanis_test?sslmode=disable
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.sum
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f tests/supabase_api_roles.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0001_cash_only.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0002_order_review_expiry.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0003_runtime_role.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/runtime_role.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0004_realtime_publication.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/realtime.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/shared_qr_migration.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0005_shared_qr_checkout.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0006_named_cashiers.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/named_cashiers.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0007_operations.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0008_catalog_and_bootstrap.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0009_menu_photos.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0010_staff_activity.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/three_roles_migration.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0011_three_staff_roles.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0012_direct_staff_accounts.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0013_cashier_pin.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0014_pos_handoff.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0015_serverless_operations.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0016_dashboard_summary.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0017_atomic_catalog.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0018_admin_hardening.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0019_media_lifecycle.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -1 -f migrations/0020_mobile_watch.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/mobile_watch.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/admin_hardening.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/catalog_crud.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/serverless_ops.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/cron_schedule.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/pos_handoff.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/cashier_pin.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/direct_staff.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/three_staff_roles.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/operations.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/staff_activity.sql
+      # Disposable CI only. Production remains paused until owner approval.
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -c "update public.settings set orders_enabled=true,pricing_confirmed_at=now() where id=1"
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/cash_lifecycle.sql
+      - run: psql "$TEST_DATABASE_URL" -v ON_ERROR_STOP=1 -f tests/order_flow.sql
+      - run: go test -race ./...
+      - run: go vet ./...
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r ../deploy/backup/requirements.txt
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq age
+      - name: Isolated database and media restore drill
+        env:
+          BACKUP_TEST_DATABASE_URL: postgres://test_runner:local_ci_only@127.0.0.1:5432/teraskayumanis_test?sslmode=disable
+          AGE_BINARY: age
+          AGE_KEYGEN_BINARY: age-keygen
+        run: |
+          cd ..
+          python -m unittest deploy.backup.test_restore_integration
+      - run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -o bin/server ./cmd/server
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vps-api
+          path: backend/bin/server
+          retention-days: 1
+  staff-integration:
+    needs: [frontend, backend]
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: vps-web
+          path: .cache/staff-stack
+      - uses: actions/download-artifact@v4
+        with:
+          name: vps-api
+          path: .cache/staff-stack
+      - name: Unpack test release
+        run: |
+          mkdir -p frontend/.output
+          tar -xzf .cache/staff-stack/web.tar.gz -C frontend/.output
+          chmod 755 .cache/staff-stack/server
+      - uses: supabase/setup-cli@v1
+        with:
+          version: 2.122.0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install 'psycopg[binary]==3.3.6'
+      - name: Start disposable Supabase Auth and PostgreSQL
+        run: |
+          supabase init --workdir .cache/staff-stack
+          supabase start --workdir .cache/staff-stack -x studio,imgproxy,logflare,vector,edge-runtime,realtime,supavisor,storage-api,postgres-meta > .cache/staff-stack/start.log 2>&1
+          supabase status --workdir .cache/staff-stack -o env > .cache/staff-stack/services.env
+      - name: Apply migrations and provision restricted test runtime
+        env:
+          TKM_E2E_ALLOW_LOCAL: '1'
+        run: python scripts/e2e/setup-stack.py
+      - run: npx playwright install --with-deps chromium
+      - name: Test real Auth, two cashiers, activity and tablet layouts
+        run: node --env-file=.cache/staff-stack/app.env node_modules/@playwright/test/cli.js test --config=playwright.staff.config.mjs
+      - name: Release the initial test edge before serverless staging
+        run: |
+          if docker container inspect tkm-staff-e2e-edge >/dev/null 2>&1; then docker rm --force tkm-staff-e2e-edge; fi
+      - name: Test full HTTP stack in serverless staging mode
+        env:
+          VERCEL: '1'
+          NUXT_SERVERLESS: 'true'
+          NUXT_PUBLIC_SYNC_MODE: polling
+          TKM_PROXY_SECRET: ci-isolated-staging-proxy-secret-32-bytes
+          NUXT_BACKEND_PROXY_SECRET: ci-isolated-staging-proxy-secret-32-bytes
+          CRON_SECRET: ci-isolated-staging-cron-secret-32-bytes
+          CI_STAGING_RUSH_SECONDS: ${{ contains(github.event.head_commit.message, '[rush-hour]') && '300' || '60' }}
+          CI_STAGING_RUSH_CUSTOMERS: ${{ contains(github.event.head_commit.message, '[rush-hour]') && '100' || '20' }}
+        run: node --env-file=.cache/staff-stack/app.env node_modules/@playwright/test/cli.js test --config=playwright.staging.config.mjs
+      - name: Keep sanitized staging metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: staging-rush-metrics
+          path: .cache/staging-rush-result.json
+          retention-days: 30
+      - name: Keep tablet screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: staff-tablet-results
+          path: .cache/staff-e2e-results/**/*.png
+          retention-days: 3
+      - name: Stop disposable stack
+        if: always()
+        run: |
+          if docker container inspect tkm-staff-e2e-edge >/dev/null 2>&1; then docker rm --force tkm-staff-e2e-edge; fi
+          if docker container inspect tkm-serverless-e2e-edge >/dev/null 2>&1; then docker rm --force tkm-serverless-e2e-edge; fi
+          supabase stop --workdir .cache/staff-stack --no-backup
+  release:
+    needs: [frontend, backend, staff-integration]
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.TKM_DEPLOY_TARGET == 'vps'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: vps-web
+          path: input
+      - uses: actions/download-artifact@v4
+        with:
+          name: vps-api
+          path: release
+      - name: Assemble immutable release
+        env:
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          mkdir -p release/web
+          tar -xzf input/web.tar.gz -C release/web
+          chmod 755 release/server
+          printf '%s\n' "$RELEASE_SHA" > release/REVISION
+          tar -czf release.tar.gz -C release server web REVISION
+          sha256sum release.tar.gz > release.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: vps-release
+          path: |
+            release.tar.gz
+            release.sha256
+          retention-days: 7
+  deploy:
+    needs: release
+    if: github.repository == 'zDarkx1/TerasKayuManis' && github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && vars.TKM_DEPLOY_TARGET == 'vps'
+    runs-on: [self-hosted, linux, x64, tkm-vps]
+    timeout-minutes: 10
+    concurrency:
+      group: teraskayumanis-vps
+      cancel-in-progress: false
+    environment:
+      name: teraskayumanis-vps
+      url: https://teraskayumanis.alrizky.me
+    steps:
+      - name: Ignore superseded branch revisions
+        id: revision
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          LATEST=$(curl --fail --silent --show-error -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/repos/zDarkx1/TerasKayuManis/git/ref/heads/main | python3 -c 'import json,sys; print(json.load(sys.stdin)["object"]["sha"])')
+          if [ "$LATEST" = "$RELEASE_SHA" ]; then
+            printf 'current=true\n' >> "$GITHUB_OUTPUT"
+          else
+            printf 'current=false\n' >> "$GITHUB_OUTPUT"
+            printf 'Skipped superseded revision %s\n' "$RELEASE_SHA" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/download-artifact@v4
+        if: steps.revision.outputs.current == 'true'
+        with:
+          name: vps-release
+          path: ${{ runner.temp }}/tkm-release
+      - name: Deploy and verify with automatic rollback
+        if: steps.revision.outputs.current == 'true'
+        env:
+          RELEASE_SHA: ${{ github.sha }}
+          ARTIFACT_DIR: ${{ runner.temp }}/tkm-release
+        run: |
+          cd "$ARTIFACT_DIR"
+          sha256sum -c release.sha256
+          install -m 600 release.tar.gz /var/lib/tkm-deploy/incoming/release.tar.gz
+          CHECKSUM=$(sha256sum release.tar.gz | cut -d ' ' -f 1)
+          sudo /usr/local/sbin/tkm-deploy-release "$RELEASE_SHA" "$CHECKSUM"
+      - name: Verify public HTTPS
+        if: steps.revision.outputs.current == 'true'
+        run: |
+          curl --fail --silent --show-error --retry 3 https://teraskayumanis.alrizky.me/api/core/menu > /dev/null
+          printf 'Deployed: https://teraskayumanis.alrizky.me\n' >> "$GITHUB_STEP_SUMMARY"

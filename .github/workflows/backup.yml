@@ -1,0 +1,63 @@
+name: Restaurant encrypted backup
+on:
+  schedule:
+    - cron: '0 20 * * *' # 03:00 Asia/Jakarta; GitHub scheduling can be delayed.
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: restaurant-backup
+  cancel-in-progress: false
+jobs:
+  backup:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container: postgres:17-bookworm
+    env:
+      BACKUP_APP_REVISION: ${{ vars.BACKUP_SOURCE_REF }}
+      BACKUP_AGE_RECIPIENT: ${{ vars.BACKUP_AGE_RECIPIENT }}
+      BACKUP_MAX_ARCHIVE_BYTES: '2097152'
+      BACKUP_DATABASE_URL: ${{ secrets.BACKUP_DATABASE_URL }}
+      SUPABASE_URL: ${{ secrets.BACKUP_SUPABASE_URL }}
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.BACKUP_SUPABASE_SERVICE_ROLE_KEY }}
+    steps:
+      - name: Check immutable backup source
+        run: |
+          test "${#BACKUP_APP_REVISION}" = 40
+          case "$BACKUP_APP_REVISION" in *[!a-f0-9]*) exit 1;; esac
+          test -n "$BACKUP_AGE_RECIPIENT"
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ vars.BACKUP_SOURCE_REF }}
+          persist-credentials: false
+      - name: Install backup runtime
+        id: runtime
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq python3 python3-venv ca-certificates age
+          python3 -m venv /tmp/tkm-backup-runtime
+          /tmp/tkm-backup-runtime/bin/pip install -r deploy/backup/requirements.txt
+      - name: Check artifact storage budget
+        env:
+          GH_BACKUP_TOKEN: ${{ github.token }}
+          GH_BACKUP_REPOSITORY: ${{ github.repository }}
+        run: /tmp/tkm-backup-runtime/bin/python deploy/backup/artifact_budget.py
+      - name: Export database and Storage, then encrypt locally
+        run: /tmp/tkm-backup-runtime/bin/python deploy/backup/artifact_backup.py build --output /tmp/tkm-backup.age
+      - name: Store only the encrypted archive
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: tkm-private-backup-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/tkm-backup.age
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+      - name: Record successful offsite upload
+        if: steps.upload.outcome == 'success'
+        run: /tmp/tkm-backup-runtime/bin/python deploy/backup/artifact_backup.py status --result success
+      - name: Record failed attempt without losing the last success
+        if: failure() && steps.runtime.outcome == 'success'
+        run: /tmp/tkm-backup-runtime/bin/python deploy/backup/artifact_backup.py status --result failed

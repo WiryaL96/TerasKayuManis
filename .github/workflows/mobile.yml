@@ -1,0 +1,57 @@
+name: Mobile Flutter
+on:
+  push:
+    paths: ['mobile/**', '.github/workflows/mobile.yml']
+  pull_request:
+    paths: ['mobile/**', '.github/workflows/mobile.yml']
+permissions:
+  contents: read
+concurrency:
+  group: mobile-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: mobile/cashier
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version-file: mobile/cashier/.fvmrc
+          channel: stable
+          # Compressing the full SDK exhausted the hosted runner after APK builds.
+          cache: false
+          pub-cache: true
+      - name: Show pinned SDK
+        run: flutter --version
+      - name: Resolve locked dependencies
+        run: flutter pub get --enforce-lockfile
+      - name: Check formatting
+        run: dart format --output=none --set-exit-if-changed lib test audit
+      - name: Analyze Flutter app
+        run: flutter analyze
+      - name: Run unit and widget tests
+        run: flutter test --concurrency=1
+      # No credentials: CI binary intentionally shows setup screen.
+      - name: Build Android debug APK
+        run: flutter build apk --debug
+      - name: Native lifecycle regression tests
+        run: python3 audit/native_watch_probe.py
+      - name: Compile native Keystore instrumentation
+        run: cd android && ./gradlew :app:assembleDebugAndroidTest --no-daemon
+      - name: Validate unsigned release compilation and lint
+        run: flutter build apk --release --target=lib/main_demo.dart --target-platform=android-arm64
+      - name: Compile isolated benchmark runner
+        working-directory: mobile/cashier/perf_harness
+        run: |
+          flutter pub get --enforce-lockfile
+          dart format --output=none --set-exit-if-changed lib integration_test test_driver
+          flutter analyze
+          flutter build apk --profile --target=integration_test/performance_test.dart --target-platform=android-arm64

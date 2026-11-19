@@ -1,0 +1,8 @@
+﻿{
+  "SYNC_MODE": "polling",
+  "API_BASE_URL": "https://teraskayumanis.vercel.app/api/core/",
+  "WS_URL": "wss://teraskayumanis.vercel.app/ws",
+  "WS_ORIGIN": "https://teraskayumanis.vercel.app",
+  "SUPABASE_URL": "https://aiptdjypuccoakyfvdyl.supabase.co",
+  "SUPABASE_ANON_KEY": ""
+}

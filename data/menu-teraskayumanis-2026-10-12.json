@@ -1,0 +1,1762 @@
+{
+  "source": "MENU TERAS KAYU MANIS_261012_222737.pdf",
+  "source_date": "2026-10-12",
+  "notes": [
+    "Harga dasar mengikuti PDF; pengaturan pajak dan service restoran tidak diubah.",
+    "Harga pizza 52+, 83+, dan seterusnya ditafsirkan ribuan rupiah; tanda + menunjukkan biaya di luar harga dasar.",
+    "Pangsit Goreng beda porsi dikonfirmasi pengguna.",
+    "Add-on pizza tidak diimpor karena harga tidak tercantum."
+  ],
+  "pending": [
+    {
+      "name": "Vanilla Milkshake",
+      "category": "milkshake",
+      "source_page": 14,
+      "reason": "Harga tidak tercantum di PDF"
+    },
+    {
+      "name": "Choco Milkshake",
+      "category": "milkshake",
+      "source_page": 14,
+      "reason": "Harga tidak tercantum di PDF"
+    },
+    {
+      "name": "Strawberry Milkshake",
+      "category": "milkshake",
+      "source_page": 14,
+      "reason": "Harga tidak tercantum di PDF"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Chinese Food",
+      "slug": "chinese-food",
+      "sort_order": 1
+    },
+    {
+      "name": "Indonesian Food",
+      "slug": "indonesian-food",
+      "sort_order": 2
+    },
+    {
+      "name": "Bakmi",
+      "slug": "bakmi",
+      "sort_order": 3
+    },
+    {
+      "name": "Steak",
+      "slug": "steak",
+      "sort_order": 4
+    },
+    {
+      "name": "Pasta",
+      "slug": "pasta",
+      "sort_order": 5
+    },
+    {
+      "name": "Rice Bowl",
+      "slug": "rice-bowl",
+      "sort_order": 6
+    },
+    {
+      "name": "Light Meal",
+      "slug": "light-meal",
+      "sort_order": 7
+    },
+    {
+      "name": "Pizza",
+      "slug": "pizza",
+      "sort_order": 8
+    },
+    {
+      "name": "Burger",
+      "slug": "burger",
+      "sort_order": 9
+    },
+    {
+      "name": "Minuman",
+      "slug": "minuman",
+      "sort_order": 10
+    },
+    {
+      "name": "Tea",
+      "slug": "tea",
+      "sort_order": 11
+    },
+    {
+      "name": "Yoghurt",
+      "slug": "yoghurt",
+      "sort_order": 12
+    },
+    {
+      "name": "Mojito",
+      "slug": "mojito",
+      "sort_order": 13
+    },
+    {
+      "name": "Juice",
+      "slug": "juice",
+      "sort_order": 14
+    },
+    {
+      "name": "Traditional",
+      "slug": "traditional",
+      "sort_order": 15
+    },
+    {
+      "name": "Coffee",
+      "slug": "coffee",
+      "sort_order": 16
+    },
+    {
+      "name": "Manual Brew",
+      "slug": "manual-brew",
+      "sort_order": 17
+    },
+    {
+      "name": "Chocolate",
+      "slug": "chocolate",
+      "sort_order": 18
+    }
+  ],
+  "products": [
+    {
+      "category": "chinese-food",
+      "name": "Udang Asam Manis + Nasi",
+      "slug": "udang-asam-manis-nasi",
+      "price": 39690,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Udang Lada Hitam + Nasi",
+      "slug": "udang-lada-hitam-nasi",
+      "price": 39690,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Kakap Asam Manis + Nasi",
+      "slug": "kakap-asam-manis-nasi",
+      "price": 33516,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Sapi Lada Hitam + Nasi",
+      "slug": "sapi-lada-hitam-nasi",
+      "price": 41454,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Sapi Asam Manis + Nasi",
+      "slug": "sapi-asam-manis-nasi",
+      "price": 41454,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Ayam Asam Manis + Nasi",
+      "slug": "ayam-asam-manis-nasi",
+      "price": 30870,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Ayam Wijen + Nasi",
+      "slug": "ayam-wijen-nasi",
+      "price": 30870,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Ayam Teriyaki + Nasi",
+      "slug": "ayam-teriyaki-nasi",
+      "price": 30870,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Ayam Lada Hitam + Nasi",
+      "slug": "ayam-lada-hitam-nasi",
+      "price": 30870,
+      "source_page": 1,
+      "description": "Disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Nasi Goreng",
+      "slug": "nasi-goreng",
+      "price": 24696,
+      "source_page": 1,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Rasa",
+          "name": "Putih",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Rasa",
+          "name": "Kecap",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Nasi Goreng Spesial",
+      "slug": "nasi-goreng-spesial",
+      "price": 35280,
+      "source_page": 1,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Nasi Goreng Rica",
+      "slug": "nasi-goreng-rica",
+      "price": 35280,
+      "source_page": 1,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Bihun Goreng",
+      "slug": "bihun-goreng",
+      "price": 26460,
+      "source_page": 1,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Bihun Goreng Spesial",
+      "slug": "bihun-goreng-spesial",
+      "price": 43218,
+      "source_page": 1,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Mie Goreng",
+      "slug": "mie-goreng",
+      "price": 26460,
+      "source_page": 1,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chinese-food",
+      "name": "Mie Goreng Spesial",
+      "slug": "mie-goreng-spesial",
+      "price": 43218,
+      "source_page": 1,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "indonesian-food",
+      "name": "Nasi Timbel Komplit",
+      "slug": "nasi-timbel-komplit",
+      "price": 37926,
+      "source_page": 1,
+      "description": "Nasi timbel dengan ayam goreng, tahu, tempe, dan sambal.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "indonesian-food",
+      "name": "Nasi Ayam Penyet",
+      "slug": "nasi-ayam-penyet",
+      "price": 32634,
+      "source_page": 1,
+      "description": "Nasi, ayam goreng, tahu, tempe, dan sambal.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "indonesian-food",
+      "name": "Nasi Timbel Gepuk",
+      "slug": "nasi-timbel-gepuk",
+      "price": 48543,
+      "source_page": 2,
+      "description": "Tidak termasuk sayur asem.",
+      "variants": [],
+      "addons": [
+        {
+          "name": "Sayur Asem",
+          "price": 10000
+        }
+      ]
+    },
+    {
+      "category": "indonesian-food",
+      "name": "Sop Iga + Nasi",
+      "slug": "sop-iga-nasi",
+      "price": 51191,
+      "source_page": 3,
+      "description": "Sop iga disajikan dengan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "indonesian-food",
+      "name": "Sei Sapi Sambal Matah",
+      "slug": "sei-sapi-sambal-matah",
+      "price": 44130,
+      "source_page": 4,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Bakmi Ayam Jamur + Bakso Goreng",
+      "slug": "bakmi-ayam-jamur-bakso-goreng",
+      "price": 28243,
+      "source_page": 5,
+      "description": "Bakmi, ayam jamur, sawi, bakso ikan, pangsit goreng, dan kuah.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Bakmi Komplit",
+      "slug": "bakmi-komplit",
+      "price": 37952,
+      "source_page": 5,
+      "description": "Bakmi, ayam jamur, sawi, pangsit rebus, bakso sapi, bakso ikan, pangsit goreng, dan kuah.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Yamien Manis",
+      "slug": "yamien-manis",
+      "price": 26460,
+      "source_page": 6,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Yamien Asin",
+      "slug": "yamien-asin",
+      "price": 26460,
+      "source_page": 6,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Yamien Manis Rica",
+      "slug": "yamien-manis-rica",
+      "price": 31752,
+      "source_page": 6,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Yamien Asin Rica",
+      "slug": "yamien-asin-rica",
+      "price": 31752,
+      "source_page": 6,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Baso Kuah",
+      "slug": "baso-kuah",
+      "price": 22050,
+      "source_page": 6,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Baso Pangsit Kuah",
+      "slug": "baso-pangsit-kuah",
+      "price": 23814,
+      "source_page": 6,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Mie Baso Pangsit Kuah",
+      "slug": "mie-baso-pangsit-kuah",
+      "price": 26460,
+      "source_page": 6,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "bakmi",
+      "name": "Pangsit Kuah",
+      "slug": "pangsit-kuah",
+      "price": 23814,
+      "source_page": 6,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "steak",
+      "name": "Chicken Steak",
+      "slug": "chicken-steak",
+      "price": 40572,
+      "source_page": 7,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Saus",
+          "name": "Mushroom",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Saus",
+          "name": "BBQ",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        },
+        {
+          "group_name": "Saus",
+          "name": "Black Pepper",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 2
+        }
+      ],
+      "addons": [
+        {
+          "name": "Extra Sauce",
+          "price": 8820
+        }
+      ]
+    },
+    {
+      "category": "steak",
+      "name": "Tenderloin Steak (200 gr)",
+      "slug": "tenderloin-steak-200-gr",
+      "price": 87318,
+      "source_page": 7,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Saus",
+          "name": "Mushroom",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Saus",
+          "name": "BBQ",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        },
+        {
+          "group_name": "Saus",
+          "name": "Black Pepper",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 2
+        }
+      ],
+      "addons": [
+        {
+          "name": "Extra Sauce",
+          "price": 8820
+        }
+      ]
+    },
+    {
+      "category": "steak",
+      "name": "Sirloin Steak (200 gr)",
+      "slug": "sirloin-steak-200-gr",
+      "price": 83790,
+      "source_page": 7,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Saus",
+          "name": "Mushroom",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Saus",
+          "name": "BBQ",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        },
+        {
+          "group_name": "Saus",
+          "name": "Black Pepper",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 2
+        }
+      ],
+      "addons": [
+        {
+          "name": "Extra Sauce",
+          "price": 8820
+        }
+      ]
+    },
+    {
+      "category": "steak",
+      "name": "Beef Stroganoff",
+      "slug": "beef-stroganoff",
+      "price": 49392,
+      "source_page": 7,
+      "description": "Premium sirloin slice dengan saus mushroom dan nasi.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "steak",
+      "name": "Beef Cordon Bleu",
+      "slug": "beef-cordon-bleu",
+      "price": 58212,
+      "source_page": 7,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "steak",
+      "name": "Chicken Cordon Bleu",
+      "slug": "chicken-cordon-bleu",
+      "price": 49392,
+      "source_page": 7,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "steak",
+      "name": "Sirloin Meltique (200 gr)",
+      "slug": "sirloin-meltique-200-gr",
+      "price": 75000,
+      "source_page": 8,
+      "description": "Australian Wagyu Meltique. Harga promo sesuai PDF.",
+      "variants": [
+        {
+          "group_name": "Saus",
+          "name": "Black Pepper",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Saus",
+          "name": "BBQ",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        },
+        {
+          "group_name": "Saus",
+          "name": "Mushroom",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 2
+        },
+        {
+          "group_name": "Saus",
+          "name": "White Mushroom",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 3
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "steak",
+      "name": "Tenderloin Meltique (200 gr)",
+      "slug": "tenderloin-meltique-200-gr",
+      "price": 75000,
+      "source_page": 8,
+      "description": "Australian Wagyu Meltique. Harga promo sesuai PDF.",
+      "variants": [
+        {
+          "group_name": "Saus",
+          "name": "Black Pepper",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Saus",
+          "name": "BBQ",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        },
+        {
+          "group_name": "Saus",
+          "name": "Mushroom",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 2
+        },
+        {
+          "group_name": "Saus",
+          "name": "White Mushroom",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 3
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "steak",
+      "name": "Ribeye Meltique (200 gr)",
+      "slug": "ribeye-meltique-200-gr",
+      "price": 75000,
+      "source_page": 8,
+      "description": "Australian Wagyu Meltique. Harga promo sesuai PDF.",
+      "variants": [
+        {
+          "group_name": "Saus",
+          "name": "Black Pepper",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Saus",
+          "name": "BBQ",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        },
+        {
+          "group_name": "Saus",
+          "name": "Mushroom",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 2
+        },
+        {
+          "group_name": "Saus",
+          "name": "White Mushroom",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 3
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "pasta",
+      "name": "Spaghetti Bolognese",
+      "slug": "spaghetti-bolognese",
+      "price": 33156,
+      "source_page": 7,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pasta",
+      "name": "Spaghetti Carbonara",
+      "slug": "spaghetti-carbonara",
+      "price": 33156,
+      "source_page": 7,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pasta",
+      "name": "Spaghetti Aglio Olio",
+      "slug": "spaghetti-aglio-olio",
+      "price": 33156,
+      "source_page": 7,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "rice-bowl",
+      "name": "Rice Bowl Ayam Asam Manis",
+      "slug": "rice-bowl-ayam-asam-manis",
+      "price": 26460,
+      "source_page": 9,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "rice-bowl",
+      "name": "Rice Bowl Ayam Wijen",
+      "slug": "rice-bowl-ayam-wijen",
+      "price": 26460,
+      "source_page": 9,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "rice-bowl",
+      "name": "Rice Bowl Ayam Teriyaki",
+      "slug": "rice-bowl-ayam-teriyaki",
+      "price": 26460,
+      "source_page": 9,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "rice-bowl",
+      "name": "Rice Bowl Ayam Lada Hitam",
+      "slug": "rice-bowl-ayam-lada-hitam",
+      "price": 26460,
+      "source_page": 9,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "rice-bowl",
+      "name": "Rice Bowl Sapi Lada Hitam",
+      "slug": "rice-bowl-sapi-lada-hitam",
+      "price": 30870,
+      "source_page": 9,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "rice-bowl",
+      "name": "Rice Bowl Sapi Asam Manis",
+      "slug": "rice-bowl-sapi-asam-manis",
+      "price": 30870,
+      "source_page": 9,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "rice-bowl",
+      "name": "Rice Bowl Kakap Asam Manis",
+      "slug": "rice-bowl-kakap-asam-manis",
+      "price": 26460,
+      "source_page": 9,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Kentang Goreng",
+      "slug": "kentang-goreng",
+      "price": 18522,
+      "source_page": 10,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Kentang Sosis",
+      "slug": "kentang-sosis",
+      "price": 22050,
+      "source_page": 10,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Onion Ring",
+      "slug": "onion-ring",
+      "price": 22050,
+      "source_page": 10,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Tahu Cabe Garam",
+      "slug": "tahu-cabe-garam",
+      "price": 22050,
+      "source_page": 10,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Tempe Mendoan",
+      "slug": "tempe-mendoan",
+      "price": 26286,
+      "source_page": 10,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Pisang Goreng",
+      "slug": "pisang-goreng",
+      "price": 20460,
+      "source_page": 10,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Pisang Bakar",
+      "slug": "pisang-bakar",
+      "price": 24696,
+      "source_page": 10,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Croissant Mini",
+      "slug": "croissant-mini",
+      "price": 20286,
+      "source_page": 10,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "light-meal",
+      "name": "Pangsit Goreng",
+      "slug": "pangsit-goreng",
+      "price": 11475,
+      "source_page": 5,
+      "description": "Tersedia dalam dua porsi.",
+      "variants": [
+        {
+          "group_name": "Porsi",
+          "name": "Porsi Bakmi",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Porsi",
+          "name": "Porsi Light Meal",
+          "price_modifier": 8525,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza Margherita",
+      "slug": "pizza-margherita",
+      "price": 52000,
+      "source_page": 11,
+      "description": "Pizza dough, tomato paste, mozzarella cheese, parmesan.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza Supreme",
+      "slug": "pizza-supreme",
+      "price": 83000,
+      "source_page": 11,
+      "description": "Pizza dough, tomato paste, smoke beef, beef patty, pepperoni, mushroom, paprika, mozzarella cheese, olive oil.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza Fungi",
+      "slug": "pizza-fungi",
+      "price": 60000,
+      "source_page": 11,
+      "description": "Pizza dough, tomato paste, mushroom, mozzarella cheese, parmesan, olive oil.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza Honey Triple Cheese",
+      "slug": "pizza-honey-triple-cheese",
+      "price": 60000,
+      "source_page": 11,
+      "description": "Pizza dough, mozzarella cheese, yellow cheddar cheese, parmesan, olive oil, honey.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza Hawaiian",
+      "slug": "pizza-hawaiian",
+      "price": 61000,
+      "source_page": 11,
+      "description": "Pizza dough, tomato paste, pepperoni, pineapple, mozzarella cheese.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza Signature",
+      "slug": "pizza-signature",
+      "price": 67000,
+      "source_page": 11,
+      "description": "Pizza dough, bolognese sauce, pepperoni, mushroom, olive oil, mozzarella cheese.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza White Mushroom",
+      "slug": "pizza-white-mushroom",
+      "price": 61000,
+      "source_page": 11,
+      "description": "Pizza dough, white sauce, mushroom, beef minced, mozzarella cheese, parmesan, olive oil.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza Triple Cheese",
+      "slug": "pizza-triple-cheese",
+      "price": 63000,
+      "source_page": 11,
+      "description": "Pizza dough, tomato paste, mozzarella cheese, yellow cheddar cheese, parmesan, olive oil.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "pizza",
+      "name": "Pizza Jalapeno Gherkins",
+      "slug": "pizza-jalapeno-gherkins",
+      "price": 61000,
+      "source_page": 11,
+      "description": "Pizza dough, tomato paste, pepperoni, gherkins, mozzarella cheese, olive oil.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "burger",
+      "name": "Beef Burger",
+      "slug": "beef-burger",
+      "price": 34398,
+      "source_page": 12,
+      "description": "",
+      "variants": [],
+      "addons": [
+        {
+          "name": "Extra Cheese",
+          "price": 7000
+        }
+      ]
+    },
+    {
+      "category": "burger",
+      "name": "Cheese Burger",
+      "slug": "cheese-burger",
+      "price": 39690,
+      "source_page": 12,
+      "description": "",
+      "variants": [],
+      "addons": [
+        {
+          "name": "Extra Cheese",
+          "price": 7000
+        }
+      ]
+    },
+    {
+      "category": "burger",
+      "name": "Combo Beef Burger",
+      "slug": "combo-beef-burger",
+      "price": 59976,
+      "source_page": 12,
+      "description": "Beef burger, french fries, dan cola float.",
+      "variants": [],
+      "addons": [
+        {
+          "name": "Extra Cheese",
+          "price": 7000
+        }
+      ]
+    },
+    {
+      "category": "minuman",
+      "name": "Cola Float",
+      "slug": "cola-float",
+      "price": 21168,
+      "source_page": 12,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Teh Tawar",
+      "slug": "teh-tawar",
+      "price": 9702,
+      "source_page": 13,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Teh Manis",
+      "slug": "teh-manis",
+      "price": 12348,
+      "source_page": 13,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Lemon Tea",
+      "slug": "lemon-tea",
+      "price": 17640,
+      "source_page": 13,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Teh Sereh Lemon",
+      "slug": "teh-sereh-lemon",
+      "price": 18522,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Ice Lychee Tea",
+      "slug": "ice-lychee-tea",
+      "price": 21168,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Ice Peach Tea",
+      "slug": "ice-peach-tea",
+      "price": 21168,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Ice Strawberry Tea",
+      "slug": "ice-strawberry-tea",
+      "price": 21168,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Matcha Latte",
+      "slug": "matcha-latte",
+      "price": 22050,
+      "source_page": 13,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Strawberry Matcha Latte",
+      "slug": "strawberry-matcha-latte",
+      "price": 23814,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Rosella Tea",
+      "slug": "rosella-tea",
+      "price": 17640,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Green Tea (Dilmah)",
+      "slug": "green-tea-dilmah",
+      "price": 17640,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Jasmine Tea (Dilmah)",
+      "slug": "jasmine-tea-dilmah",
+      "price": 17640,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "tea",
+      "name": "Blackcurrant Tea (Dilmah)",
+      "slug": "blackcurrant-tea-dilmah",
+      "price": 17640,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "yoghurt",
+      "name": "Lemon Yoghurt",
+      "slug": "lemon-yoghurt",
+      "price": 22050,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "yoghurt",
+      "name": "Strawberry Yoghurt",
+      "slug": "strawberry-yoghurt",
+      "price": 22050,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "yoghurt",
+      "name": "Lychee Yoghurt",
+      "slug": "lychee-yoghurt",
+      "price": 22050,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "mojito",
+      "name": "Lemon Mojito",
+      "slug": "lemon-mojito",
+      "price": 24696,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "mojito",
+      "name": "Lychee Mojito",
+      "slug": "lychee-mojito",
+      "price": 24696,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "mojito",
+      "name": "Peach Mojito",
+      "slug": "peach-mojito",
+      "price": 24696,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "mojito",
+      "name": "Strawberry Mojito",
+      "slug": "strawberry-mojito",
+      "price": 24696,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "mojito",
+      "name": "Ocean Blue",
+      "slug": "ocean-blue",
+      "price": 24696,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "juice",
+      "name": "Strawberry Juice",
+      "slug": "strawberry-juice",
+      "price": 23814,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "traditional",
+      "name": "Wedang Uwuh",
+      "slug": "wedang-uwuh",
+      "price": 15876,
+      "source_page": 13,
+      "description": "Wedang khas Jogja dengan berbagai macam rempah alami.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "traditional",
+      "name": "Bandrek",
+      "slug": "bandrek",
+      "price": 14994,
+      "source_page": 13,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "traditional",
+      "name": "Jeruk Nipis",
+      "slug": "jeruk-nipis",
+      "price": 17640,
+      "source_page": 13,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "traditional",
+      "name": "Jeruk Peras",
+      "slug": "jeruk-peras",
+      "price": 17640,
+      "source_page": 13,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Americano",
+      "slug": "americano",
+      "price": 18522,
+      "source_page": 15,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Long Black",
+      "slug": "long-black",
+      "price": 20286,
+      "source_page": 15,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Espresso",
+      "slug": "espresso",
+      "price": 10584,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Cappucino",
+      "slug": "cappucino",
+      "price": 22050,
+      "source_page": 15,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Cafe Latte",
+      "slug": "cafe-latte",
+      "price": 22050,
+      "source_page": 15,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 882,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Caramel Latte",
+      "slug": "caramel-latte",
+      "price": 24696,
+      "source_page": 15,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Vanilla Latte",
+      "slug": "vanilla-latte",
+      "price": 24696,
+      "source_page": 15,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Hazelnut Latte",
+      "slug": "hazelnut-latte",
+      "price": 24696,
+      "source_page": 15,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Suhu",
+          "name": "Panas",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Suhu",
+          "name": "Dingin",
+          "price_modifier": 0,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Es Kopi Susu Gula Aren",
+      "slug": "es-kopi-susu-gula-aren",
+      "price": 19404,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Es Kopi Susu Teras",
+      "slug": "es-kopi-susu-teras",
+      "price": 22050,
+      "source_page": 15,
+      "description": "Kopi susu signature dengan gula aren dan rasa yang creamy.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Berry Cano",
+      "slug": "berry-cano",
+      "price": 20286,
+      "source_page": 15,
+      "description": "Perpaduan ice americano dengan rasa strawberry segar.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Lemon Coffee",
+      "slug": "lemon-coffee",
+      "price": 22050,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "coffee",
+      "name": "Affogatto",
+      "slug": "affogatto",
+      "price": 22050,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "manual-brew",
+      "name": "Kopi Tubruk",
+      "slug": "kopi-tubruk",
+      "price": 18522,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "manual-brew",
+      "name": "V60",
+      "slug": "v60",
+      "price": 22050,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "manual-brew",
+      "name": "Japanese",
+      "slug": "japanese",
+      "price": 22932,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "manual-brew",
+      "name": "Vietnam Drip",
+      "slug": "vietnam-drip",
+      "price": 20286,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chocolate",
+      "name": "Ice Chocolate",
+      "slug": "ice-chocolate",
+      "price": 19404,
+      "source_page": 15,
+      "description": "",
+      "variants": [
+        {
+          "group_name": "Ukuran",
+          "name": "Small",
+          "price_modifier": 0,
+          "is_default": true,
+          "sort_order": 0
+        },
+        {
+          "group_name": "Ukuran",
+          "name": "Regular",
+          "price_modifier": 3528,
+          "is_default": false,
+          "sort_order": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "category": "chocolate",
+      "name": "Hot Chocolate",
+      "slug": "hot-chocolate",
+      "price": 19404,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chocolate",
+      "name": "Chocoberry",
+      "slug": "chocoberry",
+      "price": 22932,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chocolate",
+      "name": "Chocomint",
+      "slug": "chocomint",
+      "price": 22932,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chocolate",
+      "name": "Mochamint",
+      "slug": "mochamint",
+      "price": 25578,
+      "source_page": 15,
+      "description": "Perpaduan kopi, creamy coklat, dan rasa segar mint.",
+      "variants": [],
+      "addons": []
+    },
+    {
+      "category": "chocolate",
+      "name": "Chocohazel",
+      "slug": "chocohazel",
+      "price": 22932,
+      "source_page": 15,
+      "description": "",
+      "variants": [],
+      "addons": []
+    }
+  ]
+}

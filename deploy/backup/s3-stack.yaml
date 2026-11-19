@@ -1,0 +1,74 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Private encrypted TerasKayuManis backups, 30 day retention
+Parameters:
+  BucketName:
+    Type: String
+    AllowedPattern: '[a-z0-9][a-z0-9.-]{1,61}[a-z0-9]'
+Resources:
+  Backups:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BucketName: !Ref BucketName
+      OwnershipControls:
+        Rules: [{ObjectOwnership: BucketOwnerEnforced}]
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: {SSEAlgorithm: AES256}
+      LifecycleConfiguration:
+        Rules:
+          - Id: Retain30Days
+            Status: Enabled
+            Prefix: backups/
+            ExpirationInDays: 30
+            AbortIncompleteMultipartUpload: {DaysAfterInitiation: 1}
+  Policy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref Backups
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Deny
+            Principal: '*'
+            Action: s3:*
+            Resource: [!GetAtt Backups.Arn, !Sub '${Backups.Arn}/*']
+            Condition: {Bool: {'aws:SecureTransport': 'false'}}
+          - Effect: Deny
+            Principal: '*'
+            Action: s3:PutObject
+            Resource: !Sub '${Backups.Arn}/*'
+            Condition: {StringNotEquals: {'s3:x-amz-server-side-encryption': AES256}}
+  BackupRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: ec2.amazonaws.com}
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: RestaurantBackupOnly
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [s3:GetBucketPublicAccessBlock, s3:GetBucketVersioning, s3:GetEncryptionConfiguration, s3:GetLifecycleConfiguration]
+                Resource: !GetAtt Backups.Arn
+              - Effect: Allow
+                Action: [s3:PutObject, s3:GetObject]
+                Resource: !Sub '${Backups.Arn}/backups/*'
+  InstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      Roles: [!Ref BackupRole]
+Outputs:
+  Bucket: {Value: !Ref Backups}
+  InstanceProfile: {Value: !Ref InstanceProfile}

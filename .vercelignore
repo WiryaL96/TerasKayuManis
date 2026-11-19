@@ -1,0 +1,11 @@
+.cache
+.git
+.aws
+.codex
+.agents
+**/.env
+**/.env.*
+test-results
+playwright-report
+mobile
+docs
